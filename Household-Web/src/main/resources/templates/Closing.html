@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<head xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+          integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+          crossorigin="anonymous">
+    <title>Monatsabschlüsse</title>
+</head>
+<body>
+
+    <div class="pure-menu pure-menu-horizontal">
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/list" class="pure-menu-link">Liste</a></li>
+            <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Abschlüsse</a></li>
+        </ul>
+    </div>
+    <h1>Alle Abschlüsse</h1>
+
+    <table class="pure-table pure-table-bordered">
+        <thead>
+            <th>Date</th>
+            <th>Probation Sophie</th>
+            <th>Probation Alex</th>
+            <th>Details</th>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${closings}">
+                <td><span th:text="${item.date}"></span></td>
+                <td><span th:text="${item.probationSophie}"></span></td>
+                <td><span th:text="${item.probationAlex}"></span></td>
+                <td>
+                    <form th:action="@{/closings/details/{id}(id=${item.id})}" th:object="${item}" method="get">
+                        <button type="submit" class="button-error pure-button">Details</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>

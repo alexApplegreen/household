@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<head xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+          integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+          crossorigin="anonymous">
+    <title>Monatsabschluss</title>
+</head>
+<body>
+<div class="pure-menu pure-menu-horizontal">
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="/list" class="pure-menu-link">Liste</a></li>
+        <li class="pure-menu-item pure-menu-selected"><a href="/closings" class="pure-menu-link">Abschlüsse</a></li>
+    </ul>
+</div>
+<h1>Abschluss:</h1>
+<h3 th:text="${closing.date}"></h3>
+
+<table class="pure-table pure-table-bordered">
+    <thead>
+    <tr>
+        <th>Datum</th>
+        <th>Sophie</th>
+        <th>Alex</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="item : ${bills}">
+            <td><span th:text="${item.date}"></span></td>
+            <td th:if="${item.payedbySophie}"><span th:text="${item.price}">€</span></td>
+            <td th:if="!${item.payedbySophie}"><span>-</span></td>
+            <td th:if="${item.payedByAlex}"><span th:text="${item.price}">€</span></td>
+            <td th:if="!${item.payedByAlex}"><span>-</span></td>
+        </tr>
+    </tbody>
+</table>
+</body>
