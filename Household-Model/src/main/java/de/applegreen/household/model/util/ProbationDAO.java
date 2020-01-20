@@ -4,27 +4,27 @@ import java.time.LocalDateTime;
 
 public class ProbationDAO {
 
-    private Long probationSophie;
+    private Double probationSophie;
 
-    private Long probationAlex;
+    private Double probationAlex;
 
     private LocalDateTime month;
 
     public ProbationDAO() {}
 
-    public Long getProbationSophie() {
+    public Double getProbationSophie() {
         return probationSophie;
     }
 
-    public void setProbationSophie(Long probationSophie) {
+    public void setProbationSophie(Double probationSophie) {
         this.probationSophie = probationSophie;
     }
 
-    public Long getProbationAlex() {
+    public Double getProbationAlex() {
         return probationAlex;
     }
 
-    public void setProbationAlex(Long probationAlex) {
+    public void setProbationAlex(Double probationAlex) {
         this.probationAlex = probationAlex;
     }
 

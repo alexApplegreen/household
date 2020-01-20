@@ -42,23 +42,23 @@ public class ClosingService implements HasLogger {
             all.addAll(bills_Alex);
             all.addAll(bills_Sophie);
 
-            Long sum_alex = 0L;
+            Double sum_alex = 0.0;
             for (Bill bill : bills_Alex) {
                 sum_alex += bill.getPrice();
             }
 
-            Long sum_sophie = 0L;
+            Double sum_sophie = 0.0;
             for (Bill bill : bills_Sophie) {
                 sum_sophie += bill.getPrice();
             }
 
             if (sum_alex > sum_sophie) {
                 closing.setProbationAlex(sum_alex - sum_sophie);
-                closing.setProbationSophie(0L);
+                closing.setProbationSophie(0.0);
             }
             else {
                 closing.setProbationSophie(sum_sophie - sum_alex);
-                closing.setProbationAlex(0L);
+                closing.setProbationAlex(0.0);
             }
 
             closing.setBills(all);

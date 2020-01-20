@@ -66,9 +66,9 @@
         <fieldset>
             <div class="pure-control-group">
                 <label for="price">Kosten insgesamt</label>
-                <input id="price" name="price" type="number" placeholder="Preis in €">
-
-                <label for="user">Nutzer</label>
+                <input id="price" name="price" type="number" step="0.01" placeholder="Preis in €">
+                <label th:if="${name_error}" for="user">Nutzer nicht gefunden!</label>
+                <label th:if="!${name_error}" for="user">Nutzer</label>
                 <input id="user" name="user" type="text" placeholder="Name">
             </div>
             <div class="pure-controls">

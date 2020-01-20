@@ -10,6 +10,3 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
-server:
-  address: 192.168.0.123
-  port: 8080

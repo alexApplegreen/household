@@ -19,9 +19,9 @@ public class Closing {
 
     private int month;
 
-    private Long probationSophie;
+    private Double probationSophie;
 
-    private Long probationAlex;
+    private Double probationAlex;
 
     @OneToMany
     private Collection<Bill> bills;
@@ -46,19 +46,19 @@ public class Closing {
         this.date = date;
     }
 
-    public Long getProbationSophie() {
+    public Double getProbationSophie() {
         return probationSophie;
     }
 
-    public void setProbationSophie(Long probationSophie) {
+    public void setProbationSophie(Double probationSophie) {
         this.probationSophie = probationSophie;
     }
 
-    public Long getProbationAlex() {
+    public Double getProbationAlex() {
         return probationAlex;
     }
 
-    public void setProbationAlex(Long probationAlex) {
+    public void setProbationAlex(Double probationAlex) {
         this.probationAlex = probationAlex;
     }
 

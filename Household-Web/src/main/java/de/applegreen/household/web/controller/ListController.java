@@ -86,20 +86,24 @@ public class ListController implements HasLogger {
         return "redirect:/list";
     }
 
-    // TODO user per Value übergeben?
     @PostMapping("/commit")
     public String commitList(@ModelAttribute("bill") Bill bill) {
-        this.currentList.setCurrent(false);
-        this.currentList.setDone(true);
-
 
         if (bill.getUser().toLowerCase().equals("alex")) {
             bill.setPayedByAlex(true);
             bill.setPayedbySophie(false);
+            this.currentList.setCurrent(false);
+            this.currentList.setDone(true);
         }
-        else {
+        else if (bill.getUser().toLowerCase().equals("sophie")) {
             bill.setPayedbySophie(true);
             bill.setPayedByAlex(false);
+            this.currentList.setCurrent(false);
+            this.currentList.setDone(true);
+        }
+        else {
+            this.logger().error("Nutzer mit dem Namen: " + bill.getUser() + " nicht gefunden");
+            return "redirect:/list";
         }
         this.logger().info("Bill was payed by: " + bill.getUser() + " about " + bill.getPrice());
         this.billRepository.save(bill);

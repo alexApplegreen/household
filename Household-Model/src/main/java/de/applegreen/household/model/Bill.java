@@ -15,7 +15,7 @@ public class Bill {
 
     private int month;
 
-    private Long price;
+    private Double price;
 
     private boolean payedbySophie;
 
@@ -45,11 +45,11 @@ public class Bill {
         this.date = date;
     }
 
-    public Long getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
