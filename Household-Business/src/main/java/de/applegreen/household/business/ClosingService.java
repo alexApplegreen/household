@@ -62,6 +62,7 @@ public class ClosingService implements HasLogger {
             }
 
             closing.setBills(all);
+            closing.setProbationCombined(Math.max(closing.getProbationAlex(), closing.getProbationSophie()) / 2);
             this.closingRepository.saveAndFlush(closing);
         }
         catch (IndexOutOfBoundsException e) {

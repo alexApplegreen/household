@@ -23,6 +23,8 @@ public class Closing {
 
     private Double probationAlex;
 
+    private Double probationCombined;
+
     @OneToMany
     private Collection<Bill> bills;
 
@@ -30,6 +32,7 @@ public class Closing {
         this.date = data.getMonth();
         this.probationSophie = data.getProbationSophie();
         this.probationAlex = data.getProbationAlex();
+        this.probationCombined = Math.max(this.probationAlex, this.probationSophie) / 2;
     }
 
     public Closing() {
@@ -89,5 +92,13 @@ public class Closing {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Double getProbationCombined() {
+        return probationCombined;
+    }
+
+    public void setProbationCombined(Double probationCombined) {
+        this.probationCombined = probationCombined;
     }
 }

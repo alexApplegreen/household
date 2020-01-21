@@ -35,6 +35,21 @@
             <td th:if="${item.payedByAlex}"><span th:text="${item.price}">€</span></td>
             <td th:if="!${item.payedByAlex}"><span>-</span></td>
         </tr>
+        <tr>
+            <td>Probation:</td>
+            <td th:if="${closing.probationSophie &gt; closing.probationAlex}">
+                <span th:text="${closing.probationCombined}"></span>
+            </td>
+            <td th:if="${closing.probationSophie &lt; closing.probationAlex}">
+                <span>-</span>
+            </td>
+            <td th:if="${closing.probationAlex &gt; closing.probationSophie}">
+                <span th:text="${closing.probationCombined}"></span>
+            </td>
+            <td th:if="${closing.probationAlex &lt; closing.probationSophie}">
+                <span>-</span>
+            </td>
+        </tr>
     </tbody>
 </table>
 </body>
