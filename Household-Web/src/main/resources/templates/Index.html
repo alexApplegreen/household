@@ -1,11 +1,20 @@
-<html>
+<html >
 <head>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link href="../static/css/pages/index.css" rel="stylesheet" th:href="@{/css/pages/index.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-    <h1>Hallo Welt!</h1>
-    <h2>Hier entsteht eine tolle App!</h2>
-    <a href="/to_list">Zur aktuellen Einkaufsliste</a>
-    <&nbsp;>
-    <a href="/to_closings">Zur Liste der Abschlüsse</a>
+
+    <div class="container">
+        <h1>Household Planner!</h1>
+        <h2 ><a class="surely-not-a-link" href="https://www.youtube.com/watch?v=nKKkxjH3vew">Skrrrt Skrrrt</a></h2>
+        <button onclick="window.location.href = '/to_list';" class="btn btn-dark navigation-button">Zur aktuellen Einkaufsliste</button>
+        <button onclick="window.location.href = '/to_closings';" class="btn btn-dark navigation-button">Zur Liste der Abschlüsse</button>
+<!--        <a href="/to_list">Zur aktuellen Einkaufsliste</a>-->
+<!--        <a href="/to_closings">Zur Liste der Abschlüsse</a>-->
+    </div>
 </body>
 </html>

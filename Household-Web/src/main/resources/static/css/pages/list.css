@@ -1,0 +1,26 @@
+body {
+    background: url(../../images/list_background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar-collapse.collapse.in { display: inline-block; }
+
+.table {
+    background: rgba(255,255,255,0.5);
+}
+
+.article {
+    font-size: 22px;
+}
+
+.col {
+    font-size: 28px;
+}
+
+.list-button {
+    float: right;
+    margin-right: 10px;
+}
