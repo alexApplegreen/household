@@ -9,6 +9,7 @@ import de.applegreen.household.web.util.HasLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -60,6 +61,10 @@ public class ListController implements HasLogger {
 
     @PostMapping("/add")
     public String addItem(@ModelAttribute("newItem") String newItem) {
+        if (StringUtils.isEmpty(newItem)) {
+            this.logger().error("Item Name darf nicht leer sein");
+            return "redirect:/list";
+        }
         logger().info("adding new Item: " + newItem);
 
         List<String> products = this.currentList.getProducts();
