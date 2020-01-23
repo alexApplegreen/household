@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
           integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
           crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <title>Aktuelle Einkaufsliste</title>
 </head>
 <body>
@@ -30,12 +32,12 @@
     </div>
 </nav>
 
-    <h1>Einkaufsliste</h1>
+    <h1 class="header">Einkaufsliste</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Artikel</th>
+                <th scope="col" class="table-header">Artikel</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
@@ -47,43 +49,46 @@
             </tr>
             <tr th:each="item : ${list}">
                 <td><span th:text="${item}" class="article"></span></td>
-                <td>
-                    <form th:action="@{/list/save/{item}(item=${item})}" th:object="${item}" method="post">
-                        <button type="submit" class="btn btn-dark list-button">Merken</button>
+                <td class="action-bar">
+                    <form th:action="@{/list/save/{item}(item=${item})}" th:object="${item}" method="post" class="list-button-container">
+                        <button type="submit" class="btn btn-dark list-button">
+                            <i class="material-icons button-icon" style="font-size:30px; vertical-align: middle;">bookmark</i>
+                        </button>
                     </form>
-                    <form th:action="@{/list/delete/{item}(item=${item})}" th:object="${item}" method="post">
-                        <button type="submit" class="btn btn-dark list-button">Löschen</button>
+                    <form th:action="@{/list/delete/{item}(item=${item})}" th:object="${item}" method="post" class="list-button-container">
+                        <button type="submit" class="btn btn-dark list-button">
+                            <i class="material-icons button-icon" style="font-size:30px; vertical-align: middle;">delete</i>
+                        </button>
                     </form>
                 </td>
             </tr>
         </tbody>
     </table>
+    <br>
+    <br>
 
-    <form class="pure-form pure-form-aligned" action="#" th:action="@{/list/add}" th:object="${newItem}" method="post">
-        <fieldset>
-            <div class="pure-control-group">
-                <label for="newItem">Artikel</label>
-                <input id="newItem" name="newItem" type="text" placeholder="Artikel">
-                <span class="pure-form-message-inline">Erforderlich.</span>
+    <form class="article-form" action="#" th:action="@{/list/add}" th:object="${newItem}" method="post">
+        <fieldset class="field-set">
+            <div class="form-group article-form-inner">
+                <label for="newItem" class="article-form-header">Neuen Artikel hinzufügen</label>
+                <input id="newItem" class="form-control" name="newItem" type="text" placeholder="Artikel">
+                <small id="emailHelp" class="form-text text-muted">Herforderlich</small>
             </div>
 
-            <div class="pure-controls">
-                <button type="submit" class="pure-button pure-button-primary">Submit</button>
-            </div>
+            <button type="submit" class="btn btn-dark">Hinzufügen</button>
         </fieldset>
     </form>
-
-    <form class="pure-form pure-form-aligned" action="#" th:action="@{/list/commit}" th:object="${bill}" method="post">
-        <fieldset>
-            <div class="pure-control-group">
-                <label for="price">Kosten insgesamt</label>
-                <input id="price" name="price" type="number" step="0.01" placeholder="Preis in €">
-                <label th:if="${name_error}" for="user">Nutzer nicht gefunden!</label>
-                <label th:if="!${name_error}" for="user">Nutzer</label>
-                <input id="user" name="user" type="text" placeholder="Name">
+    <br>
+    <br>
+    <form class="article-form" action="#" th:action="@{/list/commit}" th:object="${bill}" method="post">
+        <fieldset class="field-set">
+            <label for="price" class="article-form-header">Kosten insgesamt</label>
+            <div class="form-group mb-3">
+                <input id="price" name="price" placeholder="Preis in €" class="form-control">
+                <input id="user" name="user" type="text" placeholder="Name" class="form-control">
             </div>
-            <div class="pure-controls">
-                <button type="submit" class="pure-button pure-button-primary">Fertig!</button>
+            <div>
+                <button type="submit" class="btn btn-dark">Fertig!</button>
             </div>
         </fieldset>
     </form>
