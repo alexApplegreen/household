@@ -1,2 +1,4 @@
 Household-Web/src/main/resources/application.yml
+Household-*/target
+household.iml
 .idea
