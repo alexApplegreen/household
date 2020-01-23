@@ -8,19 +8,64 @@ body {
 
 .navbar-collapse.collapse.in { display: inline-block; }
 
+.header {
+    color: white;
+    text-align: center;
+}
+
 .table {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.6);
+}
+
+.table-header {
+    font-size: 24px;
+}
+
+.action-bar {
+    padding: unset !important;
+    padding-bottom: 5px !important;
+    margin-right: -5px;
 }
 
 .article {
     font-size: 22px;
 }
 
-.col {
-    font-size: 28px;
+.list-button-container {
+    width: 140px;
+    float: right;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .list-button {
     float: right;
-    margin-right: 10px;
+    width: 44px;
+    height: 40px;
+    background-color: unset !important;
+    border: unset !important;
+    color: black !important;
+}
+
+.button-icon {
+    vertical-align: unset !important;
+    margin-left: -7px;
+}
+
+.article-form {
+    background: rgba(255,255,255,0.6);
+}
+
+.article-form-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.field-set {
+    text-align: center;
+}
+
+.article-form-inner {
+    text-align: center;
 }
