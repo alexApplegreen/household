@@ -2,23 +2,39 @@
 <head xmlns:th="http://www.thymeleaf.org">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="../static/css/pages/closing.css" rel="stylesheet" th:href="@{/css/pages/closing.css}"/>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
           integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
           crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <title>Monatsabschlüsse</title>
 </head>
 <body>
 
-    <div class="pure-menu pure-menu-horizontal">
-        <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="/list" class="pure-menu-link">Liste</a></li>
-            <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Abschlüsse</a></li>
-        </ul>
-    </div>
-    <h1>Alle Abschlüsse</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <table class="pure-table pure-table-bordered">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/list">Liste <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/closings">Abschlüsse <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1 class="header">Alle Abschlüsse</h1>
+    <table class="table">
         <thead>
             <th>Date</th>
             <th>Probation Sophie</th>
@@ -32,7 +48,7 @@
                 <td><span th:text="${item.probationAlex}"></span></td>
                 <td>
                     <form th:action="@{/closings/details/{id}(id=${item.id})}" th:object="${item}" method="get">
-                        <button type="submit" class="button-error pure-button">Details</button>
+                        <button type="submit" class="btn btn-dark">Details</button>
                     </form>
                 </td>
             </tr>
