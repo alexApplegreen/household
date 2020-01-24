@@ -110,7 +110,7 @@ public class ListController implements HasLogger {
             this.logger().error("Nutzer mit dem Namen: " + bill.getUser() + " nicht gefunden");
             return "redirect:/list";
         }
-        this.logger().info("Bill was payed by: " + bill.getUser() + " about " + bill.getPrice());
+        this.logger().info("Bill was payed by: " + bill.getUser() + " about " + bill.getPrice().toString());
         this.billRepository.save(bill);
 
         try {
