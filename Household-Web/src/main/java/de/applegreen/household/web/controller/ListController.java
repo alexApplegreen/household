@@ -1,6 +1,7 @@
 package de.applegreen.household.web.controller;
 
 import de.applegreen.household.model.Bill;
+import de.applegreen.household.model.Closing;
 import de.applegreen.household.model.GroceryList;
 import de.applegreen.household.persistence.BillRepository;
 import de.applegreen.household.persistence.ClosingRepository;
@@ -52,6 +53,11 @@ public class ListController implements HasLogger {
         this.closingRepository = closingRepository;
     }
 
+    /**
+     * Find current chopping list and display
+     * @param model
+     * @return
+     */
     @GetMapping
     public String showCurrent(Model model) {
         this.init();
@@ -59,6 +65,11 @@ public class ListController implements HasLogger {
         return "List";
     }
 
+    /**
+     * Add item to shopping list
+     * @param newItem
+     * @return
+     */
     @PostMapping("/add")
     public String addItem(@ModelAttribute("newItem") String newItem) {
         if (StringUtils.isEmpty(newItem)) {
@@ -75,6 +86,12 @@ public class ListController implements HasLogger {
         return "redirect:/list";
     }
 
+    /**
+     * Delete specified item by itemname
+     * @param item
+     * @return
+     */
+    // TODO URL characters are not escaped
     @PostMapping("/delete/{item}")
     public String deletitem(@PathVariable("item") String item) {
         logger().info("Deleting Item: " + item);
@@ -91,6 +108,11 @@ public class ListController implements HasLogger {
         return "redirect:/list";
     }
 
+    /**
+     * Save current list as new bill
+     * @param bill
+     * @return
+     */
     @PostMapping("/commit")
     public String commitList(@ModelAttribute("bill") Bill bill) {
 
@@ -111,6 +133,13 @@ public class ListController implements HasLogger {
             return "redirect:/list";
         }
         this.logger().info("Bill was payed by: " + bill.getUser() + " about " + bill.getPrice().toString());
+
+        // Check if this Months Closing has alread been generated
+        List<Closing> lastCurrent = this.closingRepository.findRecent(bill.getMonth());
+        if (lastCurrent.size() != 0) {
+            // if so, shift bill into next month
+            bill.setMonth(bill.getMonth() + 1);
+        }
         this.billRepository.save(bill);
 
         try {
@@ -126,6 +155,11 @@ public class ListController implements HasLogger {
         return "redirect:/list";
     }
 
+    /**
+     * Shift item onto next shopping List
+     * @param itemLater
+     * @return
+     */
     @PostMapping("/save/{itemLater}")
     public String saveForLater(@PathVariable("itemLater") String itemLater) {
         this.deletitem(itemLater);
