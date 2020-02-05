@@ -2,7 +2,7 @@ package de.applegreen.household.model;
 
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class Bill {
@@ -11,7 +11,7 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private LocalDateTime date;
+    private LocalDate date;
 
     private int month;
 
@@ -23,8 +23,10 @@ public class Bill {
 
     private String user;
 
+    private String priceString;
+
     public Bill() {
-        this.date = LocalDateTime.now();
+        this.date = LocalDate.now();
         this.month = this.date.getMonthValue();
     }
 
@@ -37,11 +39,11 @@ public class Bill {
         this.id = id;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -83,5 +85,13 @@ public class Bill {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public String getPriceString() {
+        return priceString;
+    }
+
+    public void setPriceString(String priceString) {
+        this.priceString = priceString;
     }
 }

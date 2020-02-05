@@ -8,6 +8,7 @@ import de.applegreen.household.persistence.ClosingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,11 +55,11 @@ public class ClosingService implements HasLogger {
 
             if (sum_alex > sum_sophie) {
                 closing.setProbationAlex(sum_alex - sum_sophie);
-                closing.setProbationSophie(0.0);
+                closing.setProbationSophie(0.00);
             }
             else {
                 closing.setProbationSophie(sum_sophie - sum_alex);
-                closing.setProbationAlex(0.0);
+                closing.setProbationAlex(0.00);
             }
 
             closing.setBills(all);
@@ -67,6 +68,8 @@ public class ClosingService implements HasLogger {
         }
         catch (IndexOutOfBoundsException e) {
             this.logger().info("No Bill entrys yet. Go shopping!");
+        } catch (ParseException e) {
+            this.logger().error(e.getMessage());
         }
 
     }

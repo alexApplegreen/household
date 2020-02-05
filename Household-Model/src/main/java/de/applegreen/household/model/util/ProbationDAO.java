@@ -1,6 +1,6 @@
 package de.applegreen.household.model.util;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class ProbationDAO {
 
@@ -8,7 +8,7 @@ public class ProbationDAO {
 
     private Double probationAlex;
 
-    private LocalDateTime month;
+    private LocalDate month;
 
     public ProbationDAO() {}
 
@@ -28,11 +28,11 @@ public class ProbationDAO {
         this.probationAlex = probationAlex;
     }
 
-    public LocalDateTime getMonth() {
+    public LocalDate getMonth() {
         return month;
     }
 
-    public void setMonth(LocalDateTime month) {
+    public void setMonth(LocalDate month) {
         this.month = month;
     }
 }

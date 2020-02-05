@@ -3,19 +3,29 @@ package de.applegreen.household.model;
 import de.applegreen.household.model.util.ProbationDAO;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 public class Closing {
+
+    private static final String DECIMALPATTERN = "#.##";
+
+    private static DecimalFormat format = new DecimalFormat(DECIMALPATTERN);
+
+    private static NumberFormat numberFormat = NumberFormat.getInstance(Locale.GERMANY);
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private LocalDateTime date;
+    private LocalDate date;
 
     private int month;
 
@@ -36,16 +46,16 @@ public class Closing {
     }
 
     public Closing() {
-        this.date = LocalDateTime.now();
+        this.date = LocalDate.now();
         this.month = this.date.getMonthValue();
         this.bills = new ArrayList<>();
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -53,21 +63,16 @@ public class Closing {
         return probationSophie;
     }
 
-    public void setProbationSophie(Double probationSophie) {
-        this.probationSophie = probationSophie;
+    public void setProbationSophie(Double probationSophie) throws ParseException {
+        this.probationSophie = numberFormat.parse(format.format(probationSophie)).doubleValue();
     }
 
     public Double getProbationAlex() {
         return probationAlex;
     }
 
-    public void setProbationAlex(Double probationAlex) {
-        this.probationAlex = probationAlex;
-    }
-
-    @Override
-    public String toString() {
-        return this.date.toString() + " Sophie: " + probationSophie.toString() + " Alex: " + probationAlex.toString();
+    public void setProbationAlex(Double probationAlex) throws ParseException {
+        this.probationAlex = numberFormat.parse(format.format(probationAlex)).doubleValue();
     }
 
     public int getMonth() {
@@ -98,7 +103,7 @@ public class Closing {
         return probationCombined;
     }
 
-    public void setProbationCombined(Double probationCombined) {
-        this.probationCombined = probationCombined;
+    public void setProbationCombined(Double probationCombined) throws ParseException {
+        this.probationCombined = numberFormat.parse(format.format(probationCombined)).doubleValue();
     }
 }

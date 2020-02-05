@@ -13,9 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 @Controller
@@ -23,7 +26,6 @@ import java.util.List;
 public class ListController implements HasLogger {
 
     private GroceryListRepository groceryListRepository;
-
 
     private BillRepository billRepository;
 
@@ -114,7 +116,7 @@ public class ListController implements HasLogger {
      * @return
      */
     @PostMapping("/commit")
-    public String commitList(@ModelAttribute("bill") Bill bill) {
+    public String commitList(@ModelAttribute("bill") Bill bill) throws ParseException {
 
         if (bill.getUser().toLowerCase().equals("alex")) {
             bill.setPayedByAlex(true);
@@ -132,6 +134,9 @@ public class ListController implements HasLogger {
             this.logger().error("Nutzer mit dem Namen: " + bill.getUser() + " nicht gefunden");
             return "redirect:/list";
         }
+
+        String priceString = bill.getPriceString().replaceAll(",", ".");
+        bill.setPrice(Double.parseDouble(priceString));
         this.logger().info("Bill was payed by: " + bill.getUser() + " about " + bill.getPrice().toString());
 
         // Check if this Months Closing has alread been generated

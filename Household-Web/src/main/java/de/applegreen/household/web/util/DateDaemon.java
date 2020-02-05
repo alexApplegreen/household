@@ -21,15 +21,11 @@ public class DateDaemon implements HasLogger {
 
     @PostConstruct
     public void init() {
-        try {
-            this.listen();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        this.listen();
     }
 
     @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
-    private void listen() throws InterruptedException {
+    private void listen() {
         this.logger().info("Checking Date...");
         int lastDayOfMonth = Calendar.getInstance().getActualMaximum(Calendar.DAY_OF_MONTH);
         LocalDateTime today = LocalDateTime.now();

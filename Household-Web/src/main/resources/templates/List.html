@@ -81,9 +81,9 @@
     <br>
     <form class="article-form" action="#" th:action="@{/list/commit}" th:object="${bill}" method="post">
         <fieldset class="field-set">
-            <label for="price" class="article-form-header">Kosten insgesamt</label>
+            <label for="priceString" class="article-form-header">Kosten insgesamt</label>
             <div class="form-group mb-3">
-                <input id="price" name="price" placeholder="Preis in €" class="form-control">
+                <input id="priceString" name="priceString" placeholder="Preis in €" class="form-control">
                 <input id="user" name="user" type="text" placeholder="Name" class="form-control">
             </div>
             <div>
