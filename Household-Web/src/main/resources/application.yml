@@ -3,11 +3,13 @@ spring:
     url: jdbc:mysql://localhost:3306/household?serverTimezone=UTC
     driverClassName: com.mysql.cj.jdbc.Driver
     username: household
-    password: LmypxT1995
+    password: household
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+server:
+  port: 8181
 

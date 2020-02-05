@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Household-Business/Household-Business.iml" filepath="$PROJECT_DIR$/Household-Business/Household-Business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Household-Model/Household-Model.iml" filepath="$PROJECT_DIR$/Household-Model/Household-Model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Household-Persistence/Household-Persistence.iml" filepath="$PROJECT_DIR$/Household-Persistence/Household-Persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Household-Web/Household-Web.iml" filepath="$PROJECT_DIR$/Household-Web/Household-Web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/household.iml" filepath="$PROJECT_DIR$/household.iml" />
+    </modules>
+  </component>
+</project>

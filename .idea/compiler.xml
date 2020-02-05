@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Household-Business" />
+        <module name="Household-Web" />
+        <module name="Household-Model" />
+        <module name="Household-Persistence" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="household" target="11" />
+      <module name="Household-Business" target="11" />
+      <module name="Household-Model" target="11" />
+      <module name="Household-Persistence" target="11" />
+      <module name="Household-Web" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
