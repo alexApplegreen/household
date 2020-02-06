@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head  xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="../static/css/pages/list.css" rel="stylesheet" th:href="@{/css/pages/list.css}"/>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+          integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+          crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+    <form class="article-form" th:action="@{/login}" action="#" method="post">
+        <fieldset class="field-set">
+            <label for="username" class="article-form-header">Login</label>
+            <div class="form-group mb-3">
+                <input id="username" name="username" placeholder="Username" class="form-control">
+                <input id="password" name="password" type="text" placeholder="Passwort" class="form-control">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-dark">Anmelden</button>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
