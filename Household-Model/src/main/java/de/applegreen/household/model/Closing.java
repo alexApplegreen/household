@@ -31,6 +31,8 @@ public class Closing {
 
     private int month;
 
+    private String monthString;
+
     private Double probationSophie;
 
     private Double probationAlex;
@@ -50,6 +52,7 @@ public class Closing {
     public Closing() {
         this.date = LocalDate.now();
         this.month = this.date.getMonthValue();
+        this.monthString = this.date.getMonth().name() + " " + this.date.getYear();
         this.bills = new ArrayList<>();
         this.probationSophie = 0d;
         this.probationAlex = 0d;
@@ -110,5 +113,13 @@ public class Closing {
 
     public void setProbationCombined(Double probationCombined) throws ParseException {
         this.probationCombined = numberFormat.parse(format.format(probationCombined)).doubleValue();
+    }
+
+    public String getMonthString() {
+        return monthString;
+    }
+
+    public void setMonthString(String monthString) {
+        this.monthString = monthString;
     }
 }

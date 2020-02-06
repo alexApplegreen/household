@@ -2,19 +2,15 @@ package de.applegreen.household.business;
 
 import de.applegreen.household.model.Bill;
 import de.applegreen.household.model.Closing;
-import de.applegreen.household.persistence.BillRepository;
 import de.applegreen.household.persistence.ClosingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class ClosingService implements HasLogger {
