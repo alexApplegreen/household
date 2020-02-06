@@ -7,7 +7,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EnableScheduling
 public class HouseholdApplication {
 
     public static void main(String[] args) {

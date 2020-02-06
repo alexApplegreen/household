@@ -1,5 +1,6 @@
 package de.applegreen.household.web.controller;
 
+import de.applegreen.household.business.AdviceAnnotations;
 import de.applegreen.household.model.Bill;
 import de.applegreen.household.model.Closing;
 import de.applegreen.household.model.GroceryList;
@@ -116,7 +117,8 @@ public class ListController implements HasLogger {
      * @return
      */
     @PostMapping("/commit")
-    public String commitList(@ModelAttribute("bill") Bill bill) throws ParseException {
+    @AdviceAnnotations.BillCommit
+    public String commitList(@ModelAttribute("bill") Bill bill) {
 
         if (bill.getUser().toLowerCase().equals("alex")) {
             bill.setPayedByAlex(true);
@@ -136,15 +138,15 @@ public class ListController implements HasLogger {
         }
 
         String priceString = bill.getPriceString().replaceAll(",", ".");
-        bill.setPrice(Double.parseDouble(priceString));
+        try {
+            bill.setPrice(Double.parseDouble(priceString));
+        }
+        catch (NumberFormatException e) {
+            this.logger().error(e.getMessage());
+            return "redirect:/list";
+        }
         this.logger().info("Bill was payed by: " + bill.getUser() + " about " + bill.getPrice().toString());
 
-        // Check if this Months Closing has alread been generated
-        List<Closing> lastCurrent = this.closingRepository.findRecent(bill.getMonth());
-        if (lastCurrent.size() != 0) {
-            // if so, shift bill into next month
-            bill.setMonth(bill.getMonth() + 1);
-        }
         this.billRepository.save(bill);
 
         try {

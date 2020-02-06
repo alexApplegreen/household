@@ -19,6 +19,10 @@
             <groupId>de.applegreen.household</groupId>
             <artifactId>Household-Persistence</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
     </dependencies>
 
     

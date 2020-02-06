@@ -51,6 +51,9 @@ public class Closing {
         this.date = LocalDate.now();
         this.month = this.date.getMonthValue();
         this.bills = new ArrayList<>();
+        this.probationSophie = 0d;
+        this.probationAlex = 0d;
+        this.probationCombined = 0d;
     }
 
     public LocalDate getDate() {
