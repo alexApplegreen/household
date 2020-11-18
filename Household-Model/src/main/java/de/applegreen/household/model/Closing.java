@@ -1,6 +1,7 @@
 package de.applegreen.household.model;
 
 import de.applegreen.household.model.util.ProbationDAO;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.text.DateFormat;
@@ -42,6 +43,7 @@ public class Closing {
     @OneToMany
     private Collection<Bill> bills;
 
+    @Deprecated
     public Closing(ProbationDAO data) {
         this.date = data.getMonth();
         this.probationSophie = data.getProbationSophie();

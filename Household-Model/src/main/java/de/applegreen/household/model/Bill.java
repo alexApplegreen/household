@@ -1,6 +1,8 @@
 package de.applegreen.household.model;
 
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -29,7 +31,6 @@ public class Bill {
         this.date = LocalDate.now();
         this.month = this.date.getMonthValue();
     }
-
 
     public Long getId() {
         return id;

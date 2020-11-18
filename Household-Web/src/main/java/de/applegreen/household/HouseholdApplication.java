@@ -2,10 +2,8 @@ package de.applegreen.household;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
+// TODO add JPA Auditing for creation dates?
 @SpringBootApplication
 public class HouseholdApplication {
 

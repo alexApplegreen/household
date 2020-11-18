@@ -34,6 +34,19 @@
 
     <h1 class="header">Einkaufsliste</h1>
 
+    <form class="article-form" action="#" th:action="@{/list/add}" th:object="${newItem}" method="post">
+        <fieldset class="field-set">
+            <div class="form-group article-form-inner">
+                <label for="newItem" class="article-form-header">Neuen Artikel hinzufügen</label>
+                <input id="newItem" class="form-control" name="newItem" type="text" placeholder="Artikel">
+                <small id="emailHelp" class="form-text text-muted">Herforderlich</small>
+            </div>
+            <button type="submit" class="btn btn-dark">Hinzufügen</button>
+        </fieldset>
+    </form>
+    <br>
+    <br>
+
     <table class="table">
         <thead>
             <tr>
@@ -48,14 +61,14 @@
                 <td colspan="2">Aktuell nichts zu erledigen :) </td>
             </tr>
             <tr th:each="item : ${list}">
-                <td><span th:text="${item}" class="article"></span></td>
+                <td><span th:text="${item.element}" class="article"></span></td>
                 <td class="action-bar">
-                    <form th:action="@{/list/save/{item}(item=${item})}" th:object="${item}" method="post" class="list-button-container">
+                    <form th:action="@{/list/save/{item}(item=${item.id})}" th:object="${item}" method="post" class="list-button-container">
                         <button type="submit" class="btn btn-dark list-button">
                             <i class="material-icons button-icon" style="font-size:30px; vertical-align: middle;">bookmark</i>
                         </button>
                     </form>
-                    <form th:action="@{/list/delete/{item}(item=${item})}" th:object="${item}" method="post" class="list-button-container">
+                    <form th:action="@{/list/delete/{item}(item=${item.id})}" th:object="${item}" method="post" class="list-button-container">
                         <button type="submit" class="btn btn-dark list-button">
                             <i class="material-icons button-icon" style="font-size:30px; vertical-align: middle;">delete</i>
                         </button>
@@ -67,18 +80,6 @@
     <br>
     <br>
 
-    <form class="article-form" action="#" th:action="@{/list/add}" th:object="${newItem}" method="post">
-        <fieldset class="field-set">
-            <div class="form-group article-form-inner">
-                <label for="newItem" class="article-form-header">Neuen Artikel hinzufügen</label>
-                <input id="newItem" class="form-control" name="newItem" type="text" placeholder="Artikel">
-                <small id="emailHelp" class="form-text text-muted">Herforderlich</small>
-            </div>
-            <button type="submit" class="btn btn-dark">Hinzufügen</button>
-        </fieldset>
-    </form>
-    <br>
-    <br>
     <form class="article-form" action="#" th:action="@{/list/commit}" th:object="${bill}" method="post">
         <fieldset class="field-set">
             <label for="priceString" class="article-form-header">Kosten insgesamt</label>

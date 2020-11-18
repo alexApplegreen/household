@@ -3,6 +3,7 @@ package de.applegreen.household.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Entity
@@ -14,20 +15,20 @@ public class GroceryList {
 
     private LocalDateTime createdOn;
 
-    @ElementCollection(targetClass = String.class)
-    private List<String> products;
+    @ElementCollection(targetClass = ListElement.class)
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<ListElement> products;
 
     private Boolean done;
 
     private Boolean current;
 
     public GroceryList() {
+        this.createdOn = LocalDateTime.now();
         this.done = false;
         this.current = false;
-        this.createdOn = LocalDateTime.now();
         this.products = new ArrayList<>();
     }
-
 
     public Long getId() {
         return id;
@@ -37,11 +38,12 @@ public class GroceryList {
         this.id = id;
     }
 
-    public List<String> getProducts() {
-        return products;
+    public List<ListElement> getProducts() {
+        this.products.sort(Comparator.comparing(ListElement::getTime_added));
+        return this.products;
     }
 
-    public void setProducts(List<String> products) {
+    public void setProducts(List<ListElement> products) {
         this.products = products;
     }
 
