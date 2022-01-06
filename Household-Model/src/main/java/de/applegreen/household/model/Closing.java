@@ -32,6 +32,8 @@ public class Closing {
 
     private int month;
 
+    private int year;
+
     private String monthString;
 
     private Double probationSophie;
@@ -54,6 +56,7 @@ public class Closing {
     public Closing() {
         this.date = LocalDate.now();
         this.month = this.date.getMonthValue();
+        this.year = this.date.getYear();
         this.monthString = this.date.getMonth().name() + " " + this.date.getYear();
         this.bills = new ArrayList<>();
         this.probationSophie = 0d;
@@ -123,5 +126,13 @@ public class Closing {
 
     public void setMonthString(String monthString) {
         this.monthString = monthString;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 }

@@ -27,7 +27,8 @@ public class ClosingService implements HasLogger {
      */
     public void updateProbation(Bill bill) {
         // find current closing if exists
-        List<Closing> closings = this.closingRepository.findRecent(LocalDate.now().getMonthValue());
+        LocalDate now = LocalDate.now();
+        List<Closing> closings = this.closingRepository.findRecent(now.getMonthValue(), now.getYear());
 
         // if none exists for current month
         if (closings.size() == 0) {
