@@ -6,7 +6,7 @@
 
     <groupId>de.applegreen.household</groupId>
     <artifactId>household</artifactId>
-    <version>2.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -14,11 +14,15 @@
         <module>Household-Web</module>
         <module>Household-Persistence</module>
         <module>Household-Model</module>
+        <module>Household-Frontend</module>
     </modules>
 
     <properties>
-        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
+        <spring-boot.version>2.6.6</spring-boot.version>
         <mysql-connector.version>8.0.18</mysql-connector.version>
+        <org-codehaus-flatten-plugin.version>1.1.0</org-codehaus-flatten-plugin.version>
+        <org.postgresql.version>42.3.3</org.postgresql.version>
+        <revision>1.0.0</revision>
     </properties>
 
     <dependencyManagement>
@@ -69,6 +73,31 @@
                     <source>11</source>
                     <target>11</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${org-codehaus-flatten-plugin.version}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

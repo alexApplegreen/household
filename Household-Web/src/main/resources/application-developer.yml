@@ -1,13 +1,18 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/household?serverTimezone=UTC
-    driverClassName: com.mysql.cj.jdbc.Driver
-    username: household
-    password: LmypxT1995
+    url: jdbc:postgresql://172.17.0.1:5432/${DATABASE_NAME:household}
+    password: ${DATABASE_PASSWORD:}
+    username: ${DATABASE_USER:postgres}
+    driverClassName: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+      ddl-auto: create # alternatives: validate, create(-drop), update
+    open-in-view: false # OSIV Anti-Pattern
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
+  groovy:
+    template:
+      check-template-location: false # we dont need templating
+
+server:
+  port: 80
