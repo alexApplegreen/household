@@ -3,3 +3,5 @@ Household-*/target
 household.iml
 .idea
 .flattened-pom.xml
+
+derby.log

@@ -1,5 +1,7 @@
 package de.applegreen.household.model;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,8 +15,12 @@ public class ListElement {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Basic
+    @Column(name = "element")
     private String element;
 
+    @Basic
+    @Column(name = "time_added")
     private LocalDateTime time_added;
 
     public ListElement() {

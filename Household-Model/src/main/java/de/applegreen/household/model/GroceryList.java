@@ -13,14 +13,20 @@ public class GroceryList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Basic
+    @Column(name = "createdOn")
     private LocalDateTime createdOn;
 
-    @ElementCollection(targetClass = ListElement.class)
+    @Column(name = "products")
     @OneToMany(cascade = CascadeType.ALL)
     private List<ListElement> products;
 
+    @Basic
+    @Column(name = "done")
     private Boolean done;
 
+    @Basic
+    @Column(name = "current")
     private Boolean current;
 
     public GroceryList() {

@@ -1,15 +1,18 @@
 package de.applegreen.household.model;
 
 import de.applegreen.household.model.util.ProbationDAO;
-import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.*;
-import java.text.DateFormat;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -28,21 +31,36 @@ public class Closing {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Basic
+    @Column(name = "date")
     private LocalDate date;
 
+    @Basic
+    @Column(name = "month")
     private int month;
 
+    @Basic
+    @Column(name = "year")
     private int year;
 
+    @Basic
+    @Column(name = "monthString")
     private String monthString;
 
+    @Basic
+    @Column(name = "probationSophie")
     private Double probationSophie;
 
+    @Basic
+    @Column(name = "probationAlex")
     private Double probationAlex;
 
+    @Basic
+    @Column(name = "probationCombined")
     private Double probationCombined;
 
     @OneToMany
+    @Column(name = "bills")
     private Collection<Bill> bills;
 
     @Deprecated

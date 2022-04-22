@@ -1,9 +1,12 @@
 package de.applegreen.household.model;
 
 
-import org.springframework.data.annotation.CreatedDate;
-
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
@@ -13,16 +16,28 @@ public class Bill {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Basic
+    @Column(name = "date")
     private LocalDate date;
 
+    @Basic
+    @Column(name = "month")
     private int month;
 
+    @Basic
+    @Column(name = "price")
     private Double price;
 
+    @Basic
+    @Column(name = "payedbySophie")
     private boolean payedbySophie;
 
+    @Basic
+    @Column(name = "payedbyAlex")
     private boolean payedByAlex;
 
+    @Basic
+    @Column(name = "user")
     private String user;
 
     private String priceString;

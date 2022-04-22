@@ -19,9 +19,15 @@
 
     <properties>
         <spring-boot.version>2.6.6</spring-boot.version>
-        <mysql-connector.version>8.0.18</mysql-connector.version>
         <org-codehaus-flatten-plugin.version>1.1.0</org-codehaus-flatten-plugin.version>
         <org.postgresql.version>42.3.3</org.postgresql.version>
+        <org.liquibase.version>4.9.1</org.liquibase.version>
+        <org.hibernate.version>4.9.1</org.hibernate.version>
+        <javax.validation-api.version>2.0.1.Final</javax.validation-api.version>
+        <liquibase-maven-plugin.version>4.5.0</liquibase-maven-plugin.version>
+        <spring-data-jpa.version>2.6.0</spring-data-jpa.version>
+        <spring-data-starter.version>2.6.2</spring-data-starter.version>
+        <org-codehaus-flatten-plugin.version>1.1.0</org-codehaus-flatten-plugin.version>
         <revision>1.0.0</revision>
     </properties>
 
@@ -29,28 +35,28 @@
         <dependencies>
             <dependency>
                 <groupId>de.applegreen.household</groupId>
+                <artifactId>Household-Frontend</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.applegreen.household</groupId>
                 <artifactId>Household-Business</artifactId>
-                <version>${project.version}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>de.applegreen.household</groupId>
                 <artifactId>Household-Model</artifactId>
-                <version>${project.version}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>de.applegreen.household</groupId>
                 <artifactId>Household-Persistence</artifactId>
-                <version>${project.version}</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>de.applegreen.household</groupId>
                 <artifactId>Household-Web</artifactId>
-            </dependency>
-
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql-connector.version}</version>
+                <version>${revision}</version>
             </dependency>
 
             <dependency>

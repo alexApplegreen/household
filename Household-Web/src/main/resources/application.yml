@@ -1,17 +1,25 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/machine
-    username: postgres
-
+    url: jdbc:postgresql://0.0.0.0:5432/${DATABASE_NAME:household}
+    username: ${DATABASE_USER:postgres}
+    password: ${DATABASE_pASSWORD:}
+    driverClassName: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+      ddl-auto: none
+    open-in-view: false # OSIV Anti-Pattern
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  liquibase:
+    user: ${DATABASE_USER:postgres}
+    password: ${DATABASE_PASSWORD:}
+    url: jdbc:postgresql://0.0.0.0:5432/${DATABASE_NAME:household}
+    change-log: Changelog.xml
+    enabled: ${LIQUIBASE_ENABLED:true}
+
   groovy:
     template:
-      check-template-location: false
+      check-template-location: false # we dont need templating
+
 server:
   port: 80
-
