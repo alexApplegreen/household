@@ -5,3 +5,7 @@ household.iml
 .flattened-pom.xml
 
 derby.log
+
+Household-Frontend/node/
+
+Household-Web/src/main/resources/public/

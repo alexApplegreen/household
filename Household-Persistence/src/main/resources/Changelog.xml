@@ -24,7 +24,6 @@
             <column name="probationSophie" type="numeric"/>
             <column name="probationAlex" type="numeric"/>
             <column name="probationCombined" type="numeric" />
-            <column name="bills" type=""
         </createTable>
     </changeSet>
 </databaseChangeLog>
