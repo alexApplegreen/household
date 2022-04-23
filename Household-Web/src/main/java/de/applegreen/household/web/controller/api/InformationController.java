@@ -1,4 +1,4 @@
-package de.applegreen.household.web.controller;
+package de.applegreen.household.web.controller.api;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;

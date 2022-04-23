@@ -1,44 +1,43 @@
-package de.applegreen.household.web.controller;
+package de.applegreen.household.web.controller.api;
 
 import de.applegreen.household.business.AdviceAnnotations;
+import de.applegreen.household.business.HasLogger;
 import de.applegreen.household.model.Bill;
-import de.applegreen.household.model.Closing;
 import de.applegreen.household.model.GroceryList;
 import de.applegreen.household.model.ListElement;
 import de.applegreen.household.persistence.BillRepository;
 import de.applegreen.household.persistence.ClosingRepository;
 import de.applegreen.household.persistence.GroceryListRepository;
 import de.applegreen.household.persistence.ListElementRepository;
-import de.applegreen.household.web.util.HasLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.NoSuchElementException;
 
 
 @Controller
-@RequestMapping("/list")
+@RequestMapping("/api")
 // FIXME deleting the last item will result in not loading the correct subsequent shopping list
 public class ListController implements HasLogger {
 
-    private GroceryListRepository groceryListRepository;
+    private final GroceryListRepository groceryListRepository;
 
-    private BillRepository billRepository;
+    private final BillRepository billRepository;
 
-    private ClosingRepository closingRepository;
+    private final ClosingRepository closingRepository;
 
     private GroceryList currentList;
 
-    private ListElementRepository listElementRepository;
+    private final ListElementRepository listElementRepository;
 
     private void init() {
         try {

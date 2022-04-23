@@ -23,9 +23,9 @@ public class Closing {
 
     private static final String DECIMALPATTERN = "#.##";
 
-    private static DecimalFormat format = new DecimalFormat(DECIMALPATTERN);
+    private static final DecimalFormat format = new DecimalFormat(DECIMALPATTERN);
 
-    private static NumberFormat numberFormat = NumberFormat.getInstance(Locale.GERMANY);
+    private static final NumberFormat numberFormat = NumberFormat.getInstance(Locale.GERMANY);
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
