@@ -21,5 +21,7 @@ spring:
     template:
       check-template-location: false # we dont need templating
 
+application-version: @revision@
+
 server:
   port: 80
