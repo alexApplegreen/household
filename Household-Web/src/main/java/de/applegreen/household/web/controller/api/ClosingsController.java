@@ -50,8 +50,9 @@ public class ClosingsController implements HasLogger {
     @GetMapping("/details/{id}")
     public ResponseEntity showDetail(@PathVariable("id") Long id) {
         Optional<Closing> closing_opt = this.closingRepository.findById(id);
-        if (closing_opt.isPresent())
-        // ClosingDetailDTO closingDetailDTO = this.modelMapper.map()
+        if (closing_opt.isPresent()) {
+            // ClosingDetailDTO closingDetailDTO = this.modelMapper.map()
+        }
         return ResponseEntity.ok().build();
     }
 

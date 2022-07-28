@@ -3,9 +3,6 @@ package de.applegreen.household.business.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.util.Collection;
-
 /**
  * @author Alexander Tepe | a.tepe@kalverkamp.de
  */
@@ -14,6 +11,7 @@ import java.util.Collection;
 public class ClosingsDTO {
 
     private String monthString;
+    private Integer year;
     private Double probationSophie;
     private Double probationAlex;
 
