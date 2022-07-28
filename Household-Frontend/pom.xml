@@ -41,7 +41,7 @@
                         <phase>generate-resources</phase>
                         <!-- Optional configuration which provides for running any npm command -->
                         <configuration>
-                            <arguments>--prefix household-frontend install</arguments>
+                            <arguments>install</arguments>
                         </configuration>
                     </execution>
                     <!-- Build and minify static files -->
@@ -51,7 +51,7 @@
                             <goal>npm</goal>
                         </goals>
                         <configuration>
-                            <arguments>--prefix household-frontend run build</arguments>
+                            <arguments>run build</arguments>
                         </configuration>
                     </execution>
                 </executions>

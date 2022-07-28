@@ -1,7 +1,8 @@
-import { createApp } from "vue";
+import { createApp, h } from "vue";
+import Closings from './closings'
 
 const app = createApp({
-    // root instance definition
+    render: ()=>h(Closings)
 });
 
 app.mount("#app");
