@@ -85,6 +85,7 @@
   }
   .navigation-button {
     margin-top: 5px;
+    margin-left: 4px;
     width: 250px;
   }
 </style>
